@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { createSession, OTPublisher, OTSubscriber } from 'opentok-react';
+import { createSession, preloadScript, OTPublisher, OTSubscriber } from 'opentok-react';
 import Keys from './config.js';
 
 const SubscriberWithSessionHelper = () => {
@@ -36,5 +36,5 @@ const SubscriberWithSessionHelper = () => {
       );
   }
   
-  export default SubscriberWithSessionHelper;
+  export default preloadScript(SubscriberWithSessionHelper);
   

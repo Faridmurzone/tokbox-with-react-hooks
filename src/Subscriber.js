@@ -1,5 +1,5 @@
 import React from 'react';
-import { OTSession, OTPublisher, OTStreams, OTSubscriber } from 'opentok-react';
+import { OTSession, OTPublisher, OTStreams, OTSubscriber, preloadScript } from 'opentok-react';
 import Keys from './config.js';
 
 function Subscriber() {
@@ -18,4 +18,4 @@ function Subscriber() {
   );
 }
 
-export default Subscriber
+export default preloadScript(Subscriber)
