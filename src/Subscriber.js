@@ -2,9 +2,9 @@ import React from 'react';
 import { OTSession, OTPublisher, OTStreams, OTSubscriber } from 'opentok-react';
 import Keys from './config.js';
 
-function App() {
+function Subscriber() {
   return (
-    <div className="App">
+    <div>
         <OTSession 
           apiKey={Keys.API_KEY} 
           sessionId={Keys.SESSION_ID} 
@@ -18,4 +18,4 @@ function App() {
   );
 }
 
-export default App;
+export default Subscriber

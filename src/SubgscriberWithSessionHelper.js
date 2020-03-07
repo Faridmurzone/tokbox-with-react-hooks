@@ -1,0 +1,40 @@
+import React, {useState, useEffect} from 'react';
+import { createSession, OTPublisher, OTSubscriber } from 'opentok-react';
+import Keys from './config.js';
+
+const SubscriberWithSessionHelper = () => {
+    const [sessionHelper, setSessionHelper] = useState()
+    const [streams, setStreams] = useState()
+    
+    useEffect(() => {
+      let helper = createSession({
+        apiKey: Keys.API_KEY,
+        sessionId: Keys.SESSION_ID,
+        token: Keys.TOKEN,
+        onStreamsUpdated: stream => setStreams(stream) 
+      });
+      setSessionHelper(helper)
+  
+      return () => sessionHelper.disconnect()
+    }, [])
+   
+   
+    return (
+        <div>
+          <OTPublisher session={sessionHelper.session} />
+   
+          {streams.map(stream => {
+            return (
+              <OTSubscriber
+                key={stream.id}
+                session={sessionHelper.session}
+                stream={stream}
+              />
+            );
+          })}
+        </div>
+      );
+  }
+  
+  export default SubscriberWithSessionHelper;
+  
