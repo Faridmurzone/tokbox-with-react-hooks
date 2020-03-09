@@ -3,7 +3,11 @@ import { createSession, preloadScript, OTPublisher, OTSubscriber } from 'opentok
 import Keys from './config.js';
 
 const SubscriberWithSessionHelper = () => {
-    const [sessionHelper, setSessionHelper] = useState()
+    const [sessionHelper, setSessionHelper] = useState({
+        apikey: '',
+        sessionid: '',
+        token: ''    
+        })
     const [streams, setStreams] = useState()
     
     useEffect(() => {
@@ -21,9 +25,9 @@ const SubscriberWithSessionHelper = () => {
    
     return (
         <div>
+        Stream...
           <OTPublisher session={sessionHelper.session} />
-   
-          {streams.map(stream => {
+          {streams && streams.map(stream => {
             return (
               <OTSubscriber
                 key={stream.id}
